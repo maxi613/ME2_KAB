@@ -1,0 +1,545 @@
+\documentclass[15pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\usepackage[ngerman]{babel}
+\usepackage[left=2.00cm, right=4.00cm, top=2.00cm, bottom=3.00cm]{geometry}
+\usepackage[colorlinks=true,linkcolor=black, urlcolor=black]{hyperref}
+\setlength{\parindent}{0pt}
+\usepackage{siunitx}
+\sisetup{locale = DE,per-mode = fraction} 
+\begin{document}
+	\tableofcontents
+	\newpage
+	\section{Eingangsdaten}
+	\begin{table}[!hbpt]
+		\centering
+		\begin{tabular}{c|c}
+			P & \SI{18,4}{\kilo\W}\\\hline
+			n & \SI[per-mode=reciprocal]{1540}{\per \min}\\\hline
+			i & 3,2
+		\end{tabular}
+		\caption{Obige Eingangsdaten sind vorgegeben}
+		\label{Eingangsdaten}
+	\end{table}
+	\begin{center}
+		Es kommt \textit{Variante 2} zum Einsatz.
+	\end{center}
+	\section{Modulbestimmung}
+	Als Werkstoff wurde Einsatzstahl (DIN 17210), DIN EN 10084 einsatzgehärtet [TB 20-1] gewählt.
+		\begin{table}[!hbpt]
+		\centering
+		\begin{tabular}{c|c}
+			$\sigma_{\rm F\, lim}$ & \SI{525}{\mega\pascal}\\\hline
+			$\sigma_{\rm H\, lim}$ & \SI{1650}{\mega\pascal}\\\hline
+			$Y_{\rm FS}$ & 4 \\\hline
+			$S_{\rm F}$ &  1,5 \\\hline
+			$K_{\rm A}$ & 1,25 \\\hline
+			$\psi_{\rm d}$ & 1,1
+		\end{tabular}
+		\caption{zum Werkstoff passende Sicherheitsfaktoren}
+		\label{Sicherheit}
+	\end{table}
+	Die Zähnezahl des Ritzels wurde mit $z_1 = 31$ gewählt. Das Drehmoment am Ritzel ergibt sich wie folgt:
+	$$T=\frac{P}{2\pi n}= \frac{\SI{18,4}{\kilo\watt}}{2\pi \cdot\SI{1540}{\per\min}}= \SI{114095,49}{\newton\milli\metre} $$
+	Wir haben als Schrägungswinkel $\pmb{\beta = \ang{14}}$ gewählt.
+	Nun kann der Modul berechnet werden:
+	\begin{align}
+			m'''_n \approx 1,85\cdot \sqrt[3]{\frac{T_{1 eq} \cdot \cos^2 \beta}{z_1^2 \cdot \psi_{\rm d}\cdot\sigma_{\rm F\, lim 1}}} =  
+			1,85 \cdot \sqrt[3]{\frac{\SI{114095,49}{\newton\milli\metre}\cdot 1,25\cdot \cos^2 \left( \ang{14} \right)}{31^2\cdot1,1\cdot\SI{525}{\mega\pascal}}}=\SI{1,15}{\milli\metre} \tag{21.65}
+	\end{align}
+
+	
+	Aus Gründen des Achsabstands und der Tragfähigkeit wurde ein Modul von m = \SI{1,5}{\milli\metre} gewählt.
+	\section{Zähnezahl}
+	
+	Es gilt: 
+	\begin{align}
+		i &= \frac{z_2}{z_1} \Rightarrow z_2 = i \cdot z_1 \notag\\
+		\Rightarrow z_2 &= 31\cdot 3,2 = 99,2\notag
+	\end{align}
+	
+	Gewählt: $z_2 = 99 \Rightarrow i_{\rm eff} = 3,19$\\
+	i.O., da i eine Abweichung von $\pm \SI{3}{\percent}$ haben darf $\Rightarrow i\in \left[3,104; 3,296 \right] $
+	
+	Für die Drehzahl des zweiten Zahnrads gilt:
+	\begin{align}
+		n_2 = \frac{n_1}{i}=\frac{\SI{1540}{\per\min}}{3,19} = \SI{482,22}{\per\min} \tag{21.9}
+	\end{align}
+	
+	
+	\section{Achsabstand}
+	\begin{align}
+		d_1 = \frac{z_1\cdot m_n}{\cos \beta} = \frac{31\cdot \SI{1,5}{\milli\metre}}{\cos 14^\circ} &= \SI{47,92}{\milli\metre} \tag{21.38} \\
+		d_2 = \frac{z_2\cdot m_n}{\cos \beta} = \frac{84\cdot \SI{1,5}{\milli\metre}}{\cos 14^\circ} &=\SI{153,05}{\milli\metre} \notag \\
+		a_{\rm d} = \frac{d_1+d_2}{2}=\frac{\SI{47,92}{\milli\metre} + \SI{153,05}{\milli\metre}}{2} &= \SI{100,48}{\milli\metre} 	\tag{21.42}
+	\end{align}
+	 
+	 $\Rightarrow a = \SI{100}{\milli\m}$ nach DIN 323 Reihe R20. [TB 1-16]
+	 \section{Profilverschiebung}
+	 Da $a\neq a_{\rm d}$ ist eine Profilverschiebung von Nöten.\\
+	 Stirnmodul:
+	 \begin{align}m_{\rm t} = \frac{m_{\rm n}}{\cos \beta} = \frac{\SI{1,5}{\milli \m}}{\cos 14^\circ} = \SI{1,55}{\milli\m} \tag{21.34} \end{align}
+	 
+	 Der Stirneingriffswinkel ist $\alpha_{\rm n} = 20^\circ$
+	 
+	 \begin{align}
+		 \alpha_{\rm t} = \arctan\left( \frac{\tan \alpha_{\rm n}}{\cos \beta}\right) 
+		 = \arctan\left( \frac{\tan 20^\circ}{\cos 14^\circ}\right) &= \ang{20,56}  \tag{21.35} \\
+		 \alpha_{\rm wt}= \arccos\left( \frac{a_{\rm d}}{a}\cdot \cos \alpha_{\rm t} \right) =\arccos \left( \frac{\SI{100,48}{\milli\metre}}{\SI{100}{\milli\m}}\cdot \cos 20,56^\circ\right)  &= \ang{19,81}  \tag{21.54} \\
+		 \alpha_{\rm w} = \arccos\left(\frac{a_{\rm d}}{a}\cdot \cos\alpha\right)
+		 =\arccos\left(\frac{\SI{100,48}{\milli\metre}}{\SI{100}{\milli\m}}\cdot \cos 20^\circ \right) &= \ang{19,22} \tag{21.21} 
+ 	 \end{align}
+	 Ersatzzähnezahlen:
+	 \begin{align}
+	 	z_{\rm n1} = \frac{z_1}{\cos^3 \beta} = \frac{31}{\cos^3 14^\circ} = 33,94 \tag{21.47}\\
+	 	z_{\rm n2} = \frac{z_2}{\cos^3 \beta}= \frac{99}{\cos^3 14^\circ} = 108,37 \notag
+	 \end{align}
+ 
+	 Verschiebungsfaktor:
+	 \begin{align}
+	 	x :&= \sum x_i = x_1+ x_2 = \frac{\text{inv }\alpha_{\rm wt}-\text{inv }\alpha_{\rm t}}{2\tan \alpha_{\rm n}}\cdot \left( z_1 + z_2 \right) \tag{21.56}\\
+	 	&=\frac{\text{inv }19,81^\circ -\text{inv }20,56 ^\circ}{2\tan 20^\circ}\cdot \left( 31+99 \right) \notag \\
+	  	&= -0,32 \notag 
+	\end{align}
+	 
+	 
+	 \begin{align}
+	 	x_1 &= \frac{x}{2}+\left( 0,5-\frac{x}{2}\right) \cdot \frac{\lg i}{\lg \left( \frac{z_{\rm n1} \cdot z_{\rm n2}}{100}\right) }  \tag{21.33} \\
+	 	 &= -\frac{0,32}{2}+\left( 0,5+\frac{0,32}{2}\right) \cdot \frac{\lg 3,19}{\lg \left( \frac{33,94 \cdot 108,37}{100}\right) } \notag \\
+	 	 &= 0,05 \notag \\
+	 	x_2 &= x -x_1 = -0,32 - 0,05	= -0,37 \notag
+	 \end{align}
+ 	 
+	 Verschiebung:
+	 \begin{align}
+	 	V_1 &= m_{\rm n} \cdot x_1 = \SI{1,5}{\milli\metre} \cdot 0,05 =  \SI{0,08}{\milli\m} \tag{21.49} \\	 	
+	 	V_2 &= m_{\rm n} \cdot x_2 = -\SI{1,5}{\milli\metre} \cdot 0,37 = \SI{-0,56}{\milli\m} \notag
+	 \end{align}
+	 
+	 
+	 Kopfhöhenänderung:	 
+	 \begin{align}
+	 	k &= a- a_{\rm d} - m_{\rm n} * x \tag{21.23}\\
+	  	&= \SI{100}{\milli\m} - \SI{100,48}{\milli\metre} + \SI{1,5}{\milli\metre} \cdot 0,32 \notag\\
+	 	&= \SI{-0,005}{\milli\m} \notag
+	 \end{align}
+	 	 
+	 Kopfkreisdurchmesser:
+	 \begin{align}
+	 	d_{\rm a1} &= d_1 + 2 \cdot\left( m+V_1 +k\right)  \tag{21.24} \\
+	 	&= \SI{47,92}{\milli\metre} + 2 \cdot\left( \SI{1,5}{\milli\metre}+ \SI{0,08}{\milli\m} -\SI{0.005}{\milli\m}\right) \notag \\
+	 	&=\SI{51,07}{\milli\m} \notag \\
+	 	d_{\rm a2} &= d_2 + 2 \cdot\left( m+V_2 +k\right) \notag \\
+	 	&= \SI{153,05}{\milli\metre} + 2 \cdot\left( \SI{1,5}{\milli\metre}- \SI{0,56}{\milli\m} -\SI{0.005}{\milli\m}\right) \notag \\
+	 	&=\SI{154,92}{\milli\m} \notag
+	 \end{align}
+	
+	  
+     Fußkreisdurchmesser:\\
+     Die Gleichungen für $c$ und $h_{\rm f}$ stehen ohne Nummer über Gleichung (21.41).
+     
+     \begin{align}
+     	c &= 0,25\cdot  m_{\rm n} \notag\\
+     	&= 0,25 \cdot \SI{1,5}{\milli\metre}\notag\\
+     	&= \SI{0,375}{\milli\metre} \notag \notag\\ \notag\\
+     	h_{\rm f} &= 1,25\cdot m_{\rm n}\notag\\
+     	&= 1,25\cdot \SI{1,5}{\milli\metre} \notag\\
+     	&= \SI{1,875}{\milli\m} \notag \\ \notag\\
+     	d_{\rm f1} &= d_1 -2\cdot h_{\rm f} + 2\cdot V_1 \tag{21.25}\\
+     	&=\SI{47,92}{\milli\metre}-2\cdot \SI{1,875}{\milli\m}+2\cdot \SI{0,08}{\milli\m}\notag\\
+     	&=\SI{44,33}{\milli\m}\notag\\ \notag\\
+     	d_{\rm f2} &= d_2 -2\cdot h_{\rm f} + 2\cdot V_2 \tag{21.25}\\
+     	&=\SI{153,05}{\milli\metre}-2\cdot \SI{1,875}{\milli\m}-2\cdot \SI{0,56}{\milli\m} \notag\\
+     	&=\SI{148,18}{\milli\m}\notag
+     \end{align}
+     
+     Grundkreisdurchmesser:
+     \begin{align}
+     	d_{b1}&= d_1 \cdot\cos \alpha_{\rm t} \tag{21.39}\\
+     	&=\SI{47,92}{\milli\metre} \cdot\cos 20,56^\circ \notag\\
+     	&=\SI{44,87}{\milli\m} \notag\\ \notag\\
+     	d_{b2}&= d_2 \cdot \cos \alpha_{\rm t} \tag{21.39}\\
+     	&=\SI{153,05}{\milli\metre} \cdot\cos 20,56^\circ \notag\\
+     	&=\SI{143,3}{\milli\m} \notag
+     \end{align}
+     
+     
+     Betriebswälzdurchmesser:
+     \begin{align}
+     	d_{\rm w1}&= d_1 \cdot\frac{\cos\alpha}{\cos \alpha_{\rm w}} \tag{21.22a}\\
+     	&=\SI{47,92}{\milli\metre} \cdot \frac{\cos 20^\circ}{\cos 19,22^\circ}\notag\\
+     	&= \SI{47,69}{\milli\m}\notag\\\notag\\
+     	d_{\rm w2}&= d_2 \cdot\frac{\cos\alpha}{\cos \alpha_{\rm w}} \tag{21.22}\\
+     	&= \SI{153,05}{\milli\metre} \cdot \frac{\cos 20^\circ}{\cos 19,22^\circ}\notag\\
+     	&= \SI{152,31}{\milli\m}\notag
+     \end{align}
+     
+     \section{Zahnradbreite}
+     
+     Mit dem Durchmesser-Breitenverhältnis, welcher das Verhältnis von Zahnradbreite zum Durchmesser beschreibt, kann die Zahnradbreite berechnet werden. 
+     \begin{align}
+     	\psi_{\rm d} &= \frac{b_1}{d_1} = 1,1 \tag{TB 21-13} \\
+        b_1\leq d_1 \cdot \psi_{\rm d} &= \SI{47,92}{\milli\metre} \cdot 1,1 = \SI{52,71}{\milli\m}\notag \\
+     	\Rightarrow b_1 :&= \SI{52}{\milli\m} \notag\\
+     	b_2&=\SI{52}{\milli\m} -\SI{2}{\milli\m}=\SI{50}{\milli\m} \notag
+     \end{align}
+     
+     
+     \section{Zahnradüberdeckung}
+    \begin{align*}
+    	\varepsilon_{\alpha}&=\frac{0,5\sqrt{d_{a1}^{2} - d_{b1}^{2}}+\sqrt{d_{a2}^2 - d_{b2}^2}-a_d \cdot \sin(\alpha_{\rm wt})}{\pi \cdot m_{\rm n}\cdot  \sin(\alpha_{\rm t})} \tag{21.57} \\
+    	&=\frac{0,5\sqrt{(\SI{51,07}{\milli\m})^2-(\SI{44,87}{\milli\m})^2}+\sqrt{(\SI{154,92}{\milli \m})^2- (\SI{143,3}{\milli\m})^2} -\SI{100,48}{\milli\metre}\cdot\sin 19,81^\circ}  {\pi\cdot \SI{1,5}{\milli\metre}\cdot\sin 20,56 ^\circ} \\
+    	&= 1,7
+    \end{align*}
+	
+	\begin{align*}
+		\varepsilon_{\beta}&=\frac{b_1 \cdot \sin(\beta)}{\pi \cdot m } \tag{21.44}\\
+		&=\frac{\SI{52}{\milli\m}\cdot\sin14^\circ}{\pi\cdot \SI{1,5}{\milli\metre}} \\
+		&= 2,57 \\    	
+		\varepsilon_{\gamma}&=\varepsilon_{\alpha}+\varepsilon_{\beta} \tag{21.46} \\
+		&=1,7+2,57 = 4,27
+	\end{align*}
+     
+     
+     \section{Tragfähigkeit}
+     
+     \subsection{Zahnfußtragfähigkeit} \label{Zahnfußtragfähigkeit}
+     Zu erst wird die Umfangskraft ermittelt.
+     \begin{align*}
+     	F_{\rm t} &=\frac{2 \cdot T_{1}}{d_{\rm w1}}\tag{21.70}\\
+     	&=F_{\rm t1} = F_{\rm t2} \\
+     	&=\frac{2\cdot\SI{114095,49}{\newton\milli\metre}}{\SI{47,69}{\milli\m}} \\
+     	&=\SI{4784,65}{\newton}
+     \end{align*}
+     
+     Darauf werden die folgenden Faktoren ermittelt:
+     \begin{align*}
+     	Y_{\varepsilon}&=0,25 +\frac{ 0,75}{\varepsilon_{\alpha}/\cos^{2}(\beta)} \tag{RM 21.5.4-1 S.828} \\
+     	&=0,25+\frac{0,75}{1,7/\cos^2 14^\circ} \\
+     	&= 0,68\\     	\\
+     	Y_{\beta}&=1-\frac{\varepsilon_{\beta} \cdot \beta}{\ang{120}} \tag{TB 21-19 c)}\\
+     	&=1-\frac{2,57\cdot \ang{14}}{\ang{120}}\\
+     	&=0,70\\
+     	\Rightarrow 	Y_{\beta}&= 0,75 \text{ , da } Y_{\beta} \geq 0,75
+     \end{align*}
+     
+     \begin{align*}
+     	Y_{Fa1}&=2,95 \tag{TB 21-19 a)}\\
+     	Y_{Fa2}&=2,0\\
+     	Y_{Sa1}&=1,52\tag{TB 21-19 b)}\\
+     	Y_{Sa2}&=1,7
+     \end{align*}
+     
+     Anwendungsfaktor\footnote[1]{Verweis auf Vorlesung vom 15.05.2020 }:
+     $$K_{Fges}=1,25\cdot1,1\cdot1,25\cdot1,25 = 2,1484$$
+     
+     Damit lässt sich nun die Zahnfußspannung berechnen:
+     \begin{align*}
+     	\sigma_{F0 1}&=\dfrac{F_t}{b_1 \cdot m_n} \cdot Y_{Fa1} \cdot Y_{Sa1}\cdot Y_{\beta} \cdot Y_{\varepsilon} \tag{21.82}\\
+     	&=\frac{\SI{4784,65}{\newton} }{\SI{52}{\milli\m}\cdot\SI{1,5}{\milli\m}}\cdot 2,95 \cdot 1,52 \cdot 0,75 \cdot 0,68 \\
+     	&=\SI{142,67}{\mega\pascal}\\\\
+     	\sigma_{F0 2}&=\dfrac{F_t}{b_2 \cdot m_n} \cdot Y_{Fa2} \cdot Y_{Sa2} \cdot Y_{\beta} \cdot Y_{\varepsilon} \\
+     	&=\frac{\SI{4784,65}{\newton} }{\SI{50}{\milli\m}\cdot\SI{1,5}{\milli\m}}\cdot2,0 \cdot 1,7 \cdot 0,75 \cdot 0,68 \\
+     	&=\SI{108,18}{\mega\pascal} \\\\
+     	\sigma_{F1}&=\sigma_{F0 1} \cdot K_{Fges}\tag{21.83}\\
+     	&=\SI{142,67}{\mega\pascal}\cdot 2,1484 \\
+     	&=\SI{306,52}{\mega\pascal}\\\\
+     	\sigma_{F2}&=\sigma_{F0 2} \cdot K_{Fges}\\
+     	&=\SI{108,18}{\mega\pascal} \cdot 2,1484 \\
+     	&=\SI{323,42}{\mega\pascal}
+     \end{align*}
+ 
+     
+     
+     Zur Berechnung der Zahnfuß-Grenzfestigkeit $\sigma_{FG}$ müssen wieder folgende Korrekturfaktoren berücksichtigt werden:
+     
+     \begin{align*}
+     	Y_{ST} &=2 \tag{RM 21.5.4.2}\\
+     	Y_{NT} &=1\\
+     	Y_{\delta rel T} &=1\\
+     	Y_{RelT}&=1\\
+     	Y_X&=1 
+     \end{align*}
+     
+     Daraus folgt die Zahnfuß-Grenzfestigkeit mit entsprechender Sicherheit der Zahnfußtragfähigkeit $S_F$.
+     
+     \begin{align*}
+     	\sigma_{FG}&=\sigma_{\rm F\, lim} \cdot Y_{ST} \cdot Y_{NT}\cdot Y_{\delta rel T}\cdot Y_{RelT} \cdot Y_X \tag{21.84 a)}\\
+     	&= \SI{525}{\mega\pascal} \cdot 2 \cdot 1 \cdot 1 \cdot 1 \cdot 1 \\
+     	&= \SI{1050}{\mega\pascal} \\\\
+     	S_F&=\dfrac{\sigma_{FG}}{\sigma_{F1}} \tag{21.85}\\
+     	&=\frac{600}{306,52} \\
+     	&=1,59
+     \end{align*}
+     
+     Der Wert von $S_F$ ist größer als $1,5$. Damit ist die Zahnfußtragfähigkeit gewährleistet. Da $ \sigma_{F1} > \sigma_{F2} $ wird mit $ \sigma_{F1} $ die Sicherheit berechnet.
+     
+     \subsection{Grübchentragfähigkeit}
+     Zu Beginn werden die Einflussfaktoren ermittelt.
+     \begin{align*}
+     	Z_H &=\sqrt{\dfrac{2 \cdot \cos\left(\beta\right)}{\cos^{2}\left(\alpha_{t}\right) \cdot \tan\left(\alpha_{\rm wt}\right)}} \tag{RM 21.5.5-1.} \\
+     	&= \sqrt{\dfrac{2 \cdot \cos\left(\ang{14}\right)}{\cos^{2}\left(\ang{20,56}\right) \cdot \tan\left(\ang{19,81}\right)}} \\
+     	&=2,48\\\\
+     	Z_E&=\sqrt{0,175 \cdot E} \tag{TB 21-21 b) / RM 21.5.5-1.} \\
+     	&= \sqrt{0,175 \cdot \SI{206000}{\newton\per\milli\m\squared}}\\
+     	&= 189,87 \sqrt{\si{\newton\per\milli\m\squared}}\\\\
+     	Z_\varepsilon &=\sqrt{\frac{1}{\epsilon_{\alpha}}} \tag{RM 21.5.5-1.}\\
+     	&= 	\sqrt{\frac{1}{2,57}} \\
+     	&= 0,77\\\\
+     	Z_\beta&=\sqrt{\cos(\beta)}=\sqrt{\cos(\ang{14})} = 0,99
+     \end{align*}
+     
+     
+     Mit dem Anwendungsfaktor $K_{Hges} = 1,4658$ (Lösungshinweis 3.1) lässt sich die Flankenpressung im Wälzpunkt berechnen.
+     \begin{align*}
+     	\sigma_{H0}&=Z_H \cdot Z_E \cdot Z_\epsilon \cdot Z_\beta \cdot \sqrt{\dfrac{F_t}{b_2 \cdot d_1}\cdot \dfrac{u+1}{u}}  \tag{21.88}\\
+     	&= 2,35\cdot191,7\cdot0,71\cdot0,97\cdot \sqrt{\frac{\SI{4784,65}{\newton}}{\SI{50}{\milli\m}\cdot\SI{47,92}{\milli\m}} \cdot \frac{3,19+1}{3,19}}\\
+     	&=\SI{575,58}{\mega\pascal}\\
+     	\\
+     	\sigma_{H} &= \sigma_{H0} \cdot K_{Hges} \tag{21.89}\\
+     	&= \SI{575,58}{\mega\pascal} \cdot 1,4658\\
+     	&= \SI{843,66}{\mega\pascal}
+     \end{align*}
+     
+     
+     Für die Grenzfestigkeit $\sigma_{HG}$ gilt, dass $\sigma_{HG}=\sigma_{\rm H\, lim}$ und daraus ergibt sich folgende Sicherheit der Flankenträgheit $S_H$.
+     
+     \begin{align*}
+     	S_H&=\frac{\sigma_{HG}}{\sigma_{H}} \tag{21.90a}\\
+     	&=\frac{1650}{843,66}=1,951 \geq 1,6
+     \end{align*}
+     
+     Der Wert ist größer als 1,6 und ein Grübchentragfähigkeitsnachweis ist erfüllt. 
+     
+     \section{Wellenauslegung}
+     \subsection{Vorauslegung des Durchmessers}
+     Für die Vorauslegung des Durchmessers werden erst die Vergleichsmomente $M_v$ berechnet. Dafür muss zuerst noch das Torsionsmoment von der Welle des Rades berechnet werden. Für das Torsionsmoment von der Welle des Ritzels gilt $T=T_1$.
+     
+     \begin{align*}
+     	T_2&=\dfrac{P \cdot 60 \cdot 1000 \cdot i}{2 \cdot \pi \cdot n}\\
+     	&=\frac{\SI{18,4}{\kilo\watt}\cdot 60000 \cdot 3,19 }{2\pi \SI{1540}{\per\min}}\\
+     	&=\SI{364,36}{\newton\m}\\\\
+     	M_{v1}&=1,17 \cdot 1,25 \cdot T_1\tag{11.14} \\
+     	&= 1,17 \cdot 1,25 \cdot \SI{112961,19}{\newton\milli\metre} \\
+     	&=\SI{166864,66}{\newton\milli\m} \\
+     	M_{v2}&=1,17 \cdot 1,25 \cdot T_2 \\
+     	&=     	1,17 \cdot 1,25 \cdot \SI{532531,33}{\newton\milli\m} \\
+     	&=\SI{532890,35}{\newton\milli\m}
+     \end{align*}
+     
+    
+     Nun kann eine Vorauslegung des Durchmessers vorgenommen werden mit einer Schwellfestigkeit von $\sigma_{Bwn}=\SI{245}{\mega\pascal}$ [TB 1-1].
+     
+     \begin{align*}
+     	d_{\rm a1}' &=3,4 \cdot \sqrt[3]{\dfrac{M_{v1}}{\sigma_{Bwn}}} \tag{11.14} \\
+     	&=3,4 \cdot \sqrt[3]{\dfrac{\SI{166864,66}{\newton\milli\m}}{\SI{245}{\mega\pascal}}}\\
+     	&\approx \SI{29,91}{\milli\m}\\
+     	d_{\rm a2}'&=3,4 \cdot \sqrt[3]{\dfrac{M_{v2}}{\sigma_{Bwn}}}\\
+     	&= 3,4 \cdot \sqrt[3]{\dfrac{\SI{532890,35}{\newton\milli\m}}{\SI{245}{\mega\pascal}}}\\
+     	&\approx \SI{44,05}{\milli\m}
+     \end{align*}
+ 	Gewählt: $	d_{\rm a1} = \SI{30}{\milli\m}$ und $	d_{\rm a2} = \SI{45}{\milli\m}$.
+     \subsubsection{Kranzdicke}
+     Soll-Kranzdicke:
+     $$S_{R soll}=3,5 \cdot m_n= 3,5 \cdot  \SI{1,5}{\milli \meter} = \SI{5,25}{\milli \meter}$$
+     
+     Ist-Kranzdicke:
+     $$S_{R ist,1}=\frac{d_{f1}-d_{\rm a1}}{2}=\frac{\SI{44,33}{ \milli \meter}-\SI{29,91}{\milli \meter}}{2}=\SI{7,21}{\milli \meter}$$
+     $$S_{R ist,2}=\frac{d_{f2}-d_{\rm a2}}{2}=\frac{\SI{148,18}{ \milli \meter}-\SI{44,05}{\milli \meter}}{2}=\SI{52,07}{\milli \meter}$$
+     $S_{R ist,1}, S_{R ist,1} > S_{R soll}$ dadurch wird sich gegen eine Ritzelwelle entschieden. 
+     \subsection{Auflagerkräfte}
+     Die Lagerlänge wurde auf $l=\SI{90}{\milli\m}$ festgelegt. Daraus gilt für die Lagermitte $$l_1=l_2=\SI{45}{\milli\m}$$ Zu Beginn wurden die Axial- und Radialkräfte berechnet. $F_{t 1,2}$ wurde in Absatz \ref{Zahnfußtragfähigkeit} berechnet.
+     
+     \begin{align*}
+     	F_r &:= F_{r1} = F_{r2} \\
+     	F_r&=F_t \cdot \tan(\alpha_{\rm wt})\tag{21.71}\\
+     	&=\SI{4784,65}{\newton} \cdot \tan(19,81^\circ)\\
+     	&=\SI{1794,78}{\newton}\\
+     	F_a &:= F_{a1} = F_{a2} \\
+     F_a&=F_t \cdot \tan(\beta)\tag{21.72}\\
+     	&=\SI{4784,65}{\newton}\cdot \tan(14^\circ)\\
+     	&=\SI{1192,95}{\newton}\\
+     \end{align*}
+     
+     
+     Daraufhin wurden die Auflagerkräfte berechnet mit der Bedingung, dass die Summer aller wirkenden Kräfte gleich null sind. X-Z-Ebene:\\
+     1-Ritzel ; 2-Rad
+     
+     \begin{align*}
+     	F_{\rm bx1} &=(-F_r\cdot l_1-F_a\cdot d_{\rm w1}/2)/l\\
+     	&=\frac{-\SI{1794,78}{\newton}\cdot\SI{45}{\milli\m}-\SI{1192,95}{\newton} \cdot \SI{47,69}{\milli\m}/2}{\SI{90}{\milli\m}}\\
+     	&=\SI{1213,47}{\newton}\\
+     	F_{\rm bx2} &=(F_r\cdot l_1-F_a\cdot d_{\rm w2}/2)/l \\
+     	&= \frac{\SI{1794,78}{\newton}\cdot\SI{45}{\milli\m}-\SI{1192,95}{\newton} \cdot \SI{152,31}{\milli\m}/2}{\SI{90}{\milli\m}}\\
+     	&=\SI{-112,03}{\newton}
+     \end{align*}
+     
+     $$F_{ax1} = F_r -F_{\rm bx1} = \SI{1794,78}{\newton} - \SI{1213,47}{\newton} = \SI{581,81}{\newton}$$
+     
+     $$F_{ax2} = F_r -F_{\rm bx2} = \SI{1794,78}{\newton} + \SI{112,03}{\newton} = \SI{1906,81}{\newton}$$
+     
+     \begin{align*}
+     	M_{\rm ax1} &= F_{\rm ax1} \cdot l_1  = \SI{581,81}{\newton}\cdot \SI{45}{\milli\m} = \SI{26158,95}{\newton\milli\m}\\
+     	M_{\rm ax2} &= F_{\rm ax2} \cdot l_2  = \SI{1906,81}{\newton}\cdot \SI{45}{\milli\m}  = \SI{85806,45}{\newton\milli\m}\\
+     	M_{\rm bx1} &= F_{\rm bx1} \cdot l_1  = \SI{1213,47}{\newton}\cdot \SI{45}{\milli\m}  = \SI{54606,15}{\newton\milli\m}\\
+     	M_{\rm bx2} &= F_{\rm bx2} \cdot l_2  = \SI{-112,03}{\newton}\cdot \SI{45}{\milli\m} = \SI{-5041,35}{\newton\milli\m}\\
+     \end{align*}
+     
+     
+     Y-Z - Ebene:
+     $$F_{\rm y 1,2} = F_t \cdot l_1/l = \SI{2392,33}{\newton}$$
+     $$M_{y1,2}= F_{y1,2} \cdot l_1= \SI{2392,33}{\newton} \cdot \SI{45}{\milli\m}=\SI{107654,85}{ \newton \milli\meter}$$
+     
+     Resultierende Kräfte:
+     
+     $$F_{\rm lA}= \sqrt{F_{ax1}^2+F_y^2}=\sqrt{(\SI{581,81}{\newton})^2 + (\SI{2392,33}{\newton})^2} = \SI{2461,74}{\newton}$$
+     
+     $$F_{\rm lB}= \sqrt{F_{bx1}^2+F_y^2}= \sqrt{(\SI{1213,47}{\newton})^2+ (\SI{2392,33}{\newton})^2}= \SI{2682,2}{\newton}$$
+     
+     $$F_{\rm 2A}= \sqrt{F_{ax2}^2+F_y^2}= \sqrt{(\SI{1906,81}{\newton})^2 + (\SI{2392,33}{\newton})^2} = \SI{3059,02}{\newton}$$
+     
+     $$F_{\rm 2B}= \sqrt{F_{bx2}^2+F_y^2}= \sqrt{(\SI{112,03}{\newton})^2 + (\SI{2392,33}{\newton})^2} = \SI{2394,62}{\newton} $$
+     
+     
+     Resultierende Momente:
+     \begin{align*}
+     	M_{\rm a1} &= F_{\rm la} \cdot l_1  = \SI{2461,74}{\newton}\cdot \SI{45}{\milli\m} = \SI{110778,3}{\newton\milli\m}\\
+     	M_{\rm a2} &= F_{\rm 2a} \cdot l_2  = \SI{2682,2}{\newton}\cdot \SI{45}{\milli\m} = \SI{120699}{\newton\milli\m}\\
+     	M_{\rm b1} &= F_{\rm lb} \cdot l_1  = \SI{3059,02}{\newton}\cdot \SI{45}{\milli\m} = \SI{137655,9}{\newton\milli\m}\\
+     	M_{\rm b2} &= F_{\rm 2b} \cdot l_2  = \SI{2394,62}{\newton}\cdot \SI{45}{\milli\m} = \SI{107757,9}{\newton\milli\m}
+     \end{align*}
+     
+     \subsection{Überprüfung Wellendurchmesser}
+     Aufgrund der Unstetigkeit im Momentenverlauf, werden die Momente $M_{xai}$ und$M_{xbi}$ mit einander verglichen und aus dem größeren der beiden wird das äquivalente Moment gebildet. 
+     
+     \begin{align*}
+     	M_{eq1}=\sqrt{M_{xb1}^{2}+M_{y1,2}^{2}} \cdot K_{A}=\sqrt{(-54606,15\,Nmm)^{2} + (107654,62\,Nmm)^{2}} \cdot 1,25=150889,8\,Nmm
+     \end{align*}
+     
+     \begin{align*}
+     	M_{eq2}=\sqrt{M_{xa1}^{2}+M_{y1,2}^{2}} \cdot K_{A} =\sqrt{(85806,45\,Nmm)^{2}+(107654,62\,Nmm)^{2}}\cdot 1,25=172084,02\,Nmm
+     \end{align*}	
+     
+     äquivalente Torsionsmoment:
+     
+     \begin{align*}
+     	T_{eq1}=K_{A} \cdot T_{1}=1,25 \cdot 114095,49\,Nmm=142619,36 \,Nmm
+     \end{align*}
+     
+     \begin{align*}
+     	T_{eq2}=K_{A} \cdot T_{2}=1,25 \cdot 364369,47\,Nmm =455461,84\,Nmm
+     \end{align*}
+     
+     Mit diesen Werten kann nun die Vergleichsmomente gebildet werden.
+     \begin{align*}
+     	M_{v1}=\sqrt{M_{eq1}^{2}+0,75 \cdot (0,7 \cdot T_{eq1})^{2}}=\sqrt{(150889,8\,Nmm)^{2}+0,75 \cdot (0,7 \cdot 142619,36 \,Nmm )^{2}}=173905\,Nmm
+     \end{align*}
+     
+     \begin{align*}
+     	M_{v2}=\sqrt{M_{eq2}^{2}+0,75 \cdot (0,7 \cdot T_{eq2})^{2}}=\sqrt{(172084,02\,Nmm)^{2}+0,75 \cdot (0,7 \cdot 455461,84\,Nmm)^{2}}=325345\,Nmm
+     \end{align*}
+     
+     Daraus folgen die entsprechenden Durchmesser nach Gl.(11.16).
+     
+     \begin{align*}
+     	d_{1}=3,4 \cdot \sqrt [3]{\dfrac{M_{v1}}{\sigma_{bwn}}} = 3,4 \cdot \sqrt[3]{\frac{173905\,Nmm}{245 \,Mpa}}=30,33\,mm
+     \end{align*}
+     
+     \begin{align*}
+     	d_{2}=3,4 \cdot \sqrt [3]{\dfrac{M_{v2}}{\sigma_{bwn}}} = 3,4 \cdot \sqrt[3]{\frac{325345\,Nmm}{245 \,Mpa}}=37,37\,mm
+     \end{align*}
+     
+     Der Durchmesser an der Welle des Ritzels muss neu gewählt werden. Folgende finale Durchmesser sind gewählt:
+     
+     $$d_{1}=32\,mm$$
+     $$d_{2}=45\,mm$$
+     \newpage
+     \section{Ergebnisübersicht}
+     	\begin{table}[!hbpt]
+     	\centering
+     	\begin{tabular}{c|c}
+     		m & \SI{1,5}{\milli\metre} \\\hline
+     		$z_1$ & 31 \\\hline
+     		$z_2$ & 99 \\\hline
+     		$d_1$ & \SI{47,92}{\milli\metre} \\\hline
+     		$d_2$ &  \SI{153,05}{\milli\metre}\\\hline
+     		$a_d$ & \SI{100,48}{\milli\metre} \\\hline
+     		$a$ &\SI{100}{\milli\metre} \\\hline
+     		$x_1 + x_2$ &  -0,32\\\hline
+     		$V_1$ & \SI{0,08}{\milli\m} \\\hline
+     		$V_2$ & \SI{-0,56}{\milli\m} \\\hline
+     		$k$ & \SI{-0,002889}{\milli\m}\\\hline
+     		$d_{a1}$ & \SI{51,07}{\milli\m} \\\hline
+     		$d_{a2}$ & \SI{154,92}{\milli\m} \\\hline
+     		$c$&0,325\\\hline
+     		$h_f$ &\SI{1,875}{\milli\m}\\\hline
+     		$d_{f1}$&  \SI{44,33}{\milli\m} \\\hline
+     		$d_{f2}$& \SI{148,18}{\milli\m} \\\hline
+     		$d_{b1}$& \SI{44,87}{\milli\m}\\\hline
+     		$d_{b2}$& \SI{143,3}{\milli\m} \\\hline
+     		$d_{w1}$& \SI{47,69}{\milli\m}\\\hline
+     		$d_{w2}$&   \SI{152,31}{\milli\m}\\\hline
+     		$b_1$ & \SI{52}{\milli\m}\\\hline
+     		$b_2$ &  \SI{50}{\milli\m}\\\hline
+     		$\varepsilon_{\alpha}$ & 1,7 \\\hline
+     		$\varepsilon_{\beta}$ & 2,57\\\hline
+     		$\varepsilon_{\gamma}$ & 4,27\\\hline
+     		$F_t$ & \SI{4784,65}{\newton}  \\\hline
+     		$Y_\varepsilon$ &0,66 \\\hline
+     		$Y_\beta$ & 0,75 \\\hline
+     		$Y_{Fa1}$ & 2,95 \\\hline
+     		$Y_{Fa2}$ &  2\\\hline
+     		$Y_{Sa1}$ & 1,52 \\\hline
+     		$Y_{Sa2}$ & 1,7 \\\hline
+     		$ K_{Fges} $ &  2,1484\\\hline
+     		$ \sigma_{F1}$& \SI{306,52}{\mega\pascal}\\\hline
+     		$ \sigma_{F2} $&\SI{323,42}{\mega\pascal}\\\hline
+     		$Y_{ST}$&$2 $\\\hline
+     		$Y_{NT}$&$1 $\\\hline
+     		$Y_{\delta rel T}$&$1 $\\\hline
+     		$Y_{RelT}$&$1 $\\\hline
+     		$Y_X$&$1$\\\hline
+     		$d_{\rm Welle, 1}$&$\SI{32}{\milli\m} $\\\hline
+     		$d_{\rm Welle, 1}$&$\SI{45}{\milli\m}$\\\hline
+     		$d_{\rm Rohteil, 1} $&$ \SI{35}{\milli\m}$\\\hline
+     		$d_{\rm Rohteil, 2} $&$ \SI{55}{\milli\m}$\\\hline
+     	\end{tabular}
+     	\caption{Ergebnisübersicht}
+     	\label{Ergebnisse}
+     \end{table}
+ 	\section{Literatur}
+ 	Alle Gleichungs- und Tabellennummern beziehen sich auf die 24. Auflage des Roloff/Matek und das dazugehörige Tabellenbuch.
+ 	
+ 	\section{Korrektur}
+ 		\subsection{Radialkraft}
+ 			\begin{align*}
+ 				F_{\rm r 1,2} &= \frac{F_{\rm t1,2} \tan \alpha_{\rm n}}{\cos \beta}\tag{21.71}\\
+ 				F_{\rm t1}&= F_{\rm t2}\\
+ 				\Rightarrow F_{\rm r 1,2} &= \frac{\SI{4784,65}{\newton} \cdot \tan \ang{20}}{\cos \ang{14}}\\
+ 				&= \SI{1794,78}{\newton}
+ 			\end{align*}
+	 	\subsection{Passfeder}
+	 		Die Passfedern werden gemäß Tabellenbuch Metall S. 247 ausgesucht. Die Durchmesserangaben beziehen sich auf den Durchmesser der Wellenschulter auf dem das jeweilige Zahnrad sitzt.
+	 		\paragraph{Welle Ritzel}
+	 			$d_1 = \SI{32}{\milli\m}$
+	 			DIN 6885 - A - 10 x 8 x 45
+	 		\paragraph{Welle Rad}
+		 		$d_2 = \SI{45}{\milli\m}$
+		 		DIN 6885 - A - 14 x 9 x 45
+		 \subsection{Wälzlager}		
+		 	Aufgrund der verschiedenen Durchmesser ist es nötig an beiden Enden der Welle verschiedene Lager zu benutzen:\\
+		 		\textbf{Welle Rad}\\
+		 			DIN 720-3 0209\\
+		 			DIN 720-3 0208\\
+		 		\textbf{Welle Ritzel}\\
+		 			DIN 720-3 0206\\
+		 			DIN 720-3 0205
+ 		\subsection{Literatur}	
+ 			Alle Gleichungs- und Tabellennummern beziehen sich auf die 24. Auflage des Roloff/Matek und das dazugehörige Tabellenbuch.\\
+ 			Weiter wurde das Tabellenbuch Metall 47. Auflage aus dem Europa Verlag verwendet.
+ 			
+\end{document}
