@@ -192,7 +192,7 @@ F_t2=2*T_2/dw2
 F_t=F_t1=F_t2
 print("Umfangskraft im Stirnschnitt F_t1 (21.70): ", round(F_t1,2))
 print("Umfangskraft im Stirnschnitt F_t2 (21.70): ", round(F_t2,2))
-Fr=F_t1*tand(alpha)/cosd(beta)
+Fr=F_t1*tand(alpha_wt)
 print("Radialkraft Fr (21.71): ",round(Fr,2))
 print("")
 
