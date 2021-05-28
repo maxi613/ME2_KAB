@@ -1,0 +1,75 @@
+	\subsection{Radialkraft}
+ 			\begin{align*}
+ 				F_{\rm r 1,2} &= F_{t1,2} \cdot \tan(\alpha_{\rm wt}) \\
+ 				\Rightarrow F_{\rm r 1,2} &= \SI{4784,65}{\newton} \cdot \tan(\ang{19,81})\\
+ 				&= \SI{1723,33}{\newton}
+ 			\end{align*}
+		\subsection{Auflagerberechnung und Vergleichsmomente }
+		
+		     Die Lagerlänge wurde auf $l=\SI{90}{\milli\m}$ festgelegt. Daraus gilt für die Lagermitte. $$l_1=l_2=\SI{45}{\milli\m}$$ 
+
+		
+		Daraufhin wurden die Auflagerkräfte berechnet mit der Bedingung, dass die Summer aller wirkenden Kräfte gleich null sind. X-Z-Ebene:\\
+		1-Ritzel ; 2-Rad
+		
+		\begin{align*}
+		F_{\rm bx1} &=(-F_r\cdot l_1-F_a\cdot d_{\rm w1}/2)/l\\
+		&=\frac{-\SI{1723,33}{\newton}\cdot\SI{45}{\milli\m}-\SI{1192,95}{\newton} \cdot \SI{47,69}{\milli\m}/2}{\SI{90}{\milli\m}}\\
+		&=\SI{-1177,74}{\newton}\\
+		F_{\rm bx2} &=(F_r\cdot l_1-F_a\cdot d_{\rm w2}/2)/l \\
+		&= \frac{\SI{1723,33}{\newton}\cdot\SI{45}{\milli\m}-\SI{1192,95}{\newton} \cdot \SI{152,31}{\milli\m}/2}{\SI{90}{\milli\m}}\\
+		&=\SI{-147,75}{\newton}
+		\end{align*}
+		
+		$$F_{ax1} = F_r -F_{\rm bx1} = \SI{1177,74}{\newton} - \SI{1213,47}{\newton} = \SI{-545,59}{\newton}$$
+		
+		$$F_{ax2} = F_r -F_{\rm bx2} = \SI{1177,74}{\newton} + \SI{112,03}{\newton} = \SI{1871,08}{\newton}$$
+
+   		\begin{align*}
+		M_{\rm ax1} &= F_{\rm ax1} \cdot l_1  = \SI{-545,59}{\newton}\cdot \SI{45}{\milli\m} = \SI{-24551,55}{\newton\milli\m}\\
+		M_{\rm ax2} &= F_{\rm ax2} \cdot l_2  = \SI{1871,08}{\newton}\cdot \SI{45}{\milli\m}  = \SI{84198,6}{\newton\milli\m}\\
+		M_{\rm bx1} &= F_{\rm bx1} \cdot l_1  = \SI{-1177,74}{\newton}\cdot \SI{45}{\milli\m}  = \SI{-52998,3}{\newton\milli\m}\\
+		M_{\rm bx2} &= F_{\rm bx2} \cdot l_2  = \SI{-147,75}{\newton}\cdot \SI{45}{\milli\m} = \SI{-6648,75}{\newton\milli\m}\\
+		\end{align*}
+		
+  		 Y-Z - Ebene:
+  		 
+		$$F_{\rm y 1,2} = F_t \cdot l_1/l = \SI{2392,33}{\newton}$$
+		$$M_{y1,2}= F_{y1,2} \cdot l_1= \SI{2392,33}{\newton} \cdot \SI{45}{\milli\m}=\SI{107654,85}{ \newton \milli\meter}$$
+		\vspace{0.5cm}
+		
+		
+		Resultierende Kräfte:
+		
+		$$F_{\rm lA}= \sqrt{F_{ax1}^2+F_y^2}=\sqrt{(\SI{-545,59}{\newton})^2 + (\SI{2392,33}{\newton})^2} = \SI{2453,75}{\newton}$$
+		
+		$$F_{\rm lB}= \sqrt{F_{bx1}^2+F_y^2}= \sqrt{(\SI{-1177,74}{\newton})^2+ (\SI{2392,33}{\newton})^2}= \SI{2666,52}{\newton}$$
+		
+		$$F_{\rm 2A}= \sqrt{F_{ax2}^2+F_y^2}= \sqrt{(\SI{1871,08}{\newton})^2 + (\SI{2392,33}{\newton})^2} = \SI{3037,13}{\newton}$$
+		
+		$$F_{\rm 2B}= \sqrt{F_{bx2}^2+F_y^2}= \sqrt{(\SI{-147,75}{\newton})^2 + (\SI{2392,33}{\newton})^2} = \SI{2396,89}{\newton} $$
+		\vspace{0.5cm}
+		
+		
+		Resultierende Momente an Welle-Ritzel:
+		\begin{align*}
+		M_{\rm A} &= F_{\rm lA} \cdot l_1  = \SI{2453,75}{\newton}\cdot \SI{45}{\milli\m} = \SI{110418,75}{\newton\milli\m}\\
+		M_{\rm B} &= F_{\rm 1B} \cdot l_2  = \SI{2666,52}{\newton}\cdot \SI{45}{\milli\m} = \SI{119993,4}{\newton\milli\m}\\
+		\end{align*}
+		
+		Resultierende Momente an Welle-Rad:
+		\begin{align*}
+		M_{\rm A} &= F_{\rm 2A} \cdot l_1  = \SI{3037,13}{\newton}\cdot \SI{45}{\milli\m} = \SI{136670,85}{\newton\milli\m}\\
+		M_{\rm B} &= F_{\rm 2B} \cdot l_2  = \SI{2396,89}{\newton}\cdot \SI{45}{\milli\m} = \SI{107860,05}{\newton\milli\m}
+		\end{align*}
+		
+		\subsection{äquivalentes Biegemoment}
+		     Aufgrund der Unstetigkeit im Momentenverlauf, werden die Momente $M_{xai}$ und$M_{xbi}$ mit einander verglichen und aus dem größeren der beiden wird das äquivalente Moment gebildet. 
+		
+		\begin{align*}
+		M_{eq1}=\sqrt{M_{bx1}^{2}+M_{y1,2}^{2}} \cdot K_{A}=\sqrt{(-52998,3\,Nmm)^{2} + (107654,62\,Nmm)^{2}} \cdot 1,25=149991,34\,Nmm
+		\end{align*}
+		
+		\begin{align*}
+		M_{eq2}=\sqrt{M_{xa1}^{2}+M_{y1,2}^{2}} \cdot K_{A} =\sqrt{(84198,6\,Nmm)^{2}+(107654,62\,Nmm)^{2}}\cdot 1,25=170838,56\,Nmm
+		\end{align*}
